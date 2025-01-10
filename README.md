@@ -47,6 +47,23 @@ This script tracks changes to Google Slides files in a specified Google Drive fo
 1. Run the `trackDriveActivity` function to start tracking changes.
 2. The script will send an email summary of changes made to Google Slides files in the specified folder.
 
+## Schedule Daily Notifications
+
+To receive daily notifications at 3 PM, follow these steps:
+
+1. Open your Google Apps Script project.
+2. Click on the clock icon in the left sidebar (Triggers).
+3. Click **+ Add Trigger**.
+4. Configure the trigger as follows:
+   - **Function to run**: `trackDriveActivity`
+   - **Deployment**: `Head`
+   - **Event source**: `Time-driven`
+   - **Type of time-based trigger**: `Day timer`
+   - **Time of day**: `3pm to 4pm`
+5. Click **Save**.
+
+Once set up, the script will automatically run at 3 PM every day and send an email summary of changes made to Google Slides files in the specified folder.
+
 ## How It Works
 - The script checks for changes made to Google Slides files in the specified folder since the last run.
 - If changes are detected, it sends an email with a list of modified files and their links.
@@ -55,6 +72,9 @@ This script tracks changes to Google Slides files in a specified Google Drive fo
 ## Customization
 - You can modify the script to track other file types by changing the `MimeType.GOOGLE_SLIDES` parameter.
 - You can also customize the email subject and body in the `sendSummaryEmail` function.
+
+## License
+This project is open-source and available under the [MIT License](LICENSE).
 
 ---
 
