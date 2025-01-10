@@ -63,6 +63,7 @@ To receive daily notifications at 3 PM, follow these steps:
 5. Click **Save**.
 
 Once set up, the script will automatically run at 3 PM every day and send an email summary of changes made to Google Slides files in the specified folder.
+**You can now skip the above steps and run `createDailyTrigger()` to make add scheduler. Run `deleteTriggers()` to delete scheduler.
 
 ## How It Works
 - The script checks for changes made to Google Slides files in the specified folder since the last run.
