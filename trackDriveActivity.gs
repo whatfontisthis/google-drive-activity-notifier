@@ -159,6 +159,34 @@ function sendSummaryEmail(changes) {
     body += `- ${change.name}(${change.url})\n`; // Format: 문서이름(링크)
   }
 
+/**
+ * Creates a time-driven trigger to run the script daily at 3 PM.
+ */
+function createDailyTrigger() {
+  // Delete existing triggers to avoid duplicates
+  deleteTriggers();
+
+  // Create a new trigger
+  ScriptApp.newTrigger('trackDriveActivity')
+    .timeBased()
+    .atHour(15) // 3 PM
+    .everyDays(1) // Runs daily
+    .create();
+
+  Logger.log('Daily trigger created to run at 3 PM.');
+}
+
+/**
+ * Deletes all existing triggers for this script.
+ */
+function deleteTriggers() {
+  const triggers = ScriptApp.getProjectTriggers();
+  for (const trigger of triggers) {
+    ScriptApp.deleteTrigger(trigger);
+  }
+  Logger.log('All existing triggers deleted.');
+}
+
   // Send the email
   GmailApp.sendEmail(EMAIL_ADDRESS, subject, body);
 }
